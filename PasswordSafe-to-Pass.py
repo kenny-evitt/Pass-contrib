@@ -37,6 +37,12 @@ with open(args.file, 'r') as file:
 
         ( group_title, username, passwd, url, auto_type, created, passwd_modified, last_access, passwd_expiry_date, passwd_expiry_interval, entry_modified, passwd_policy, passwd_policy_name, history, run_command, dca, shift_dca, email, protected, symbols, notes ) = row
 
+        # Encode forward slashes and colons (and percent signs)
+        group_title = group_title.replace('%', '%%')
+        group_title = group_title.replace('/', '%2F')
+        group_title = group_title.replace(':', '%3A')
+        group_title = group_title.replace('*', '%2A')
+
         group_title = group_title.replace('.', '/')
         group_title = group_title.replace('»', '.')
 
