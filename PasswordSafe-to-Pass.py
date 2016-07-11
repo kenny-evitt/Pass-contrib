@@ -64,6 +64,7 @@ with open(args.file, 'r') as file:
         print "Adding entry for {}:".format(group_title)
 
         bash_command = "echo -e {} | pass insert --multiline --force {}".format( bashquote(entry), bashquote(group_title) )
+
         # The `stdout` argument effectively hides it from being printed when the script is run
         return_code = call(bash_command, executable='/bin/bash', stdout=open(os.devnull, 'wb'), shell=True)
 
